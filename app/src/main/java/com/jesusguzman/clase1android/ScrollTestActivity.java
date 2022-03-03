@@ -17,8 +17,8 @@ import android.view.MenuItem;
 
 public class ScrollTestActivity extends AppCompatActivity {
 
-    private static final String CANAL_NAME = "Canal de las estrellas";
-    private static final String ID_CANAL = "2";
+    public static final String CANAL_NAME = "Canal de las estrellas";
+    public static final String ID_CANAL = "2";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

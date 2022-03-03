@@ -1,51 +1,111 @@
 package com.jesusguzman.clase1android;
 
-import android.os.Bundle;
-
-import com.google.android.material.snackbar.Snackbar;
-
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
+import android.app.PendingIntent;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
-
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
-
-import com.jesusguzman.clase1android.databinding.ActivityImageBinding;
+import android.widget.Button;
+import android.widget.ScrollView;
 
 public class ImageActivity extends AppCompatActivity {
 
-    private AppBarConfiguration appBarConfiguration;
-    private ActivityImageBinding binding;
+    private static final String TITLE_NOTIFICATIONS = "Mensaje de Cheems";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_image);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.tollbar_scroll_image);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        binding = ActivityImageBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+        Button notificacionStandar = findViewById(R.id.btn_notificacion1);
 
-        setSupportActionBar(binding.toolbar);
-
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_image);
-        appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-
-        binding.fab.setOnClickListener(new View.OnClickListener() {
+        notificacionStandar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                NotificationManagerCompat notificationManager = NotificationManagerCompat.from(getApplicationContext());
+                notificationManager.notify(1,
+                        constructorNotificaciones(
+                                TITLE_NOTIFICATIONS,
+                                "NO SOY UN VIMRUS - TEMNGO AMNSIEDAD")
+                                .build()
+                );
+            }
+        });
+
+        Button notificacionAccionable = findViewById(R.id.btn_notificacion2);
+        notificacionAccionable.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(getApplicationContext(), ScrollTestActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                PendingIntent pendingIntent = PendingIntent.getActivity(
+                        getApplicationContext(),
+                        0,
+                        intent,
+                        0);
+
+                NotificationCompat.Builder builder = constructorNotificaciones(
+                        TITLE_NOTIFICATIONS,
+                        "DALE CLIC - NO SOY UN VIRUZZZ x"
+                ).setContentIntent(pendingIntent)
+                        .setAutoCancel(true);
+
+                NotificationManagerCompat notificationManager =
+                        NotificationManagerCompat.from(getApplicationContext());
+                notificationManager.notify(1, builder.build());
+            }
+        });
+
+        Button notificacionConBoton = findViewById(R.id.btn_notificacion3);
+        notificacionConBoton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(getApplicationContext(), ScrollTestActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                PendingIntent pendingIntent = PendingIntent.getActivity(
+                        getApplicationContext(),
+                        0,
+                        intent,
+                        0);
+
+                Intent intent2 = new Intent(getApplicationContext(), MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                PendingIntent pendingIntent2 = PendingIntent.getActivity(
+                        getApplicationContext(),
+                        0,
+                        intent2,
+                        0);
+
+                NotificationCompat.Builder builder = constructorNotificaciones(
+                        TITLE_NOTIFICATIONS,
+                        "Picale al botón para obtener los packs XD"
+                ).setContentIntent(pendingIntent)
+                        .addAction(R.drawable.ic_baseline_image_24, "Obtener packs", pendingIntent2)
+                        .setAutoCancel(true);
+
+
+
+                NotificationManagerCompat notificationManager =
+                        NotificationManagerCompat.from(getApplicationContext());
+                notificationManager.notify(1, builder.build());
             }
         });
     }
 
-    @Override
-    public boolean onSupportNavigateUp() {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_image);
-        return NavigationUI.navigateUp(navController, appBarConfiguration)
-                || super.onSupportNavigateUp();
+    public NotificationCompat.Builder constructorNotificaciones(String Title, String mensaje) {
+        return new NotificationCompat.Builder(getApplicationContext(), ScrollTestActivity.ID_CANAL)
+                .setSmallIcon(R.drawable.ic_launcher_background)
+                .setContentTitle(Title)
+                .setContentText(mensaje)
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
     }
 }
