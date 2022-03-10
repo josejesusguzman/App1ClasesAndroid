@@ -6,4 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".ActivityDatos">
 
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="#000"
+        android:dividerHeight="1dp"
+        app:layout_constraintBottom_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

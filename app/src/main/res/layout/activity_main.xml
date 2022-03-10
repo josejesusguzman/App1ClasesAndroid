@@ -47,4 +47,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_accion_turbo" />
 
+    <Button
+        android:id="@+id/btn_ir_activity_datos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Amonos a los datos :3"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_ir_otra_activity" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

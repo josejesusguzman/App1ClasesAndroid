@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         txtMuestraTexto = (TextView) findViewById(R.id.txt_muestra_texto);
         Button btnAccionTurbo = (Button) findViewById(R.id.btn_accion_turbo);
         Button btnIrActivity = (Button) findViewById(R.id.btn_ir_otra_activity);
+        Button btnActivityDatos = (Button) findViewById(R.id.btn_ir_activity_datos);
 
         btnAccionTurbo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,6 +45,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext(), ScrollTestActivity.class));
+            }
+        });
+
+        btnActivityDatos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), ActivityDatos.class));
             }
         });
     }
