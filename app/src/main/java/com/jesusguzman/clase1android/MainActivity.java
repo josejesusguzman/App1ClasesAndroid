@@ -6,6 +6,7 @@ import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.RemoteInput;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -47,6 +48,12 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        getMessageText(new Intent(this, MainActivity.class));
+    }
+
     private void mostrarTexto() {
         String texto = edtTextoCapturado.getText().toString();
         if (texto.equals("")){
@@ -69,5 +76,21 @@ public class MainActivity extends AppCompatActivity {
             });
             snackbar.show();
         }
+    }
+
+    private void getMessageText(Intent intent) {
+        Bundle remoteInput = RemoteInput.getResultsFromIntent(intent);
+        if(remoteInput != null) {
+            Toast.makeText(getApplicationContext(),
+                    remoteInput.getCharSequence(ImageActivity.KEY_TEXT),
+                    Toast.LENGTH_LONG)
+                    .show();
+        } else {
+            Toast.makeText(getApplicationContext(),
+                    "Eto lo hago pa diveltilme",
+                    Toast.LENGTH_SHORT)
+                    .show();
+        }
+
     }
 }

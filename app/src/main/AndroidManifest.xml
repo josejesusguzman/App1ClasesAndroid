@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".ImageActivity"></activity>
+        <activity android:name=".ActivityDatos"></activity>
+        <activity android:name=".ImageActivity" />
         <activity android:name=".ScrollTestActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
