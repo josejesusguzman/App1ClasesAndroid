@@ -3,68 +3,61 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:id="@+id/ctl_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".TareaPseudocodigo">
 
     <EditText
-        android:id="@+id/edt_mi_texto"
-        android:layout_width="match_parent"
+        android:id="@+id/editTextNumberDecimal"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:layout_marginHorizontal="12dp"
-        android:hint="Introduce el texto"
+        android:layout_marginTop="16dp"
+        android:hint="Edad"
+        android:ems="10"
+        android:inputType="numberDecimal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/btn_accion_turbo"
+    <EditText
+        android:id="@+id/editTextNumberDecimal2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="APRIETAME PAPI!!!!! :3"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="16dp"
+        android:hint="Peso"
+        android:ems="10"
+        android:inputType="numberDecimal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edt_mi_texto" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextNumberDecimal" />
 
     <TextView
-        android:id="@+id/txt_muestra_texto"
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/btn_ir_otra_activity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Amonos!!!!!"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_accion_turbo" />
-
-    <Button
-        android:id="@+id/btn_ir_activity_datos"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Amonos a los datos :3"
         android:layout_marginTop="24dp"
+        android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_ir_otra_activity" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextNumberDecimal2" />
 
-    <Button
-        android:id="@+id/btn_tarea"
+    <TextView
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TAREA"
         android:layout_marginTop="24dp"
+        android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_ir_activity_datos" />
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="ACCIÓN TURBO"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

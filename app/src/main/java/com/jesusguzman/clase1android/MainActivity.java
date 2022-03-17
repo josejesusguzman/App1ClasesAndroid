@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         Button btnAccionTurbo = (Button) findViewById(R.id.btn_accion_turbo);
         Button btnIrActivity = (Button) findViewById(R.id.btn_ir_otra_activity);
         Button btnActivityDatos = (Button) findViewById(R.id.btn_ir_activity_datos);
+        Button bttTarea = (Button) findViewById(R.id.btn_tarea);
 
         btnAccionTurbo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,10 +49,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btnActivityDatos.setOnClickListener(new View.OnClickListener() {
+        btnActivityDatos.setOnClickListener(view ->
+                startActivity(new Intent(getApplicationContext(), ActivityDatos.class))
+        );
+
+        bttTarea.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), ActivityDatos.class));
+                startActivity(new Intent(getApplicationContext(), TareaPseudocodigo.class));
             }
         });
     }
